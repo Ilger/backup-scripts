@@ -1,0 +1,17 @@
+USER=craxit
+# run as root user "sudo corntab -e"
+
+# make dir for daily backups at 2:02 on monday
+2 2 1 * * /home/$USER/backup-scripts/daily/week-dir-for-daily.sh
+
+# backup every day at 23:03
+# backup bookit
+3 23 * * * /home/$USER/backup-scripts/daily/backup-script-bookit.sh
+# backup ssh
+3 23 * * * /home/$USER/backup-scripts/daily/backup-script-sso.sh
+
+# clean up before last week daily backups on monday
+# 2 2 1 * * /home/$USER/backup-scripts/daily/cleanup-last-week-1.sh
+
+# make weekly on friday backup sso and bookit
+1 22 5 * * /home/$USER/backup-scripts/weekly/weekly-backup.sh
