@@ -1,8 +1,9 @@
 FROM mcr.microsoft.com/powershell:latest
-CMD [ "pwsh", "Install-Module dbatools -Scope CurrentUser -Force" ]
+
+RUN pwsh -c "Install-Module dbatools -Scope AllUsers -Force"
 
 WORKDIR /usr/src/app
-COPY ./backup-bookit.ps1 .
+COPY ./backup-bookit.ps1 ./backup-bookit.ps1
 
 CMD [ "pwsh", "./backup-bookit.ps1" ]
-CMD [ "pwsh" ]
+# CMD [ "pwsh" ]
